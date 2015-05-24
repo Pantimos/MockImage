@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">if (top != self) {top.location.href = 'http://mockimage.pantimos.io/';}</script>
+    <title>动态占位图生成器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <script src="assets/js/jquery-1.11.3.min.js"></script>
+    <base href="http://mockimage.pantimos.io/" target="_blank"/>
+</head>
+<body>
+<div class="container">
+    <div class="demo-headline">
+        <h1 class="demo-logo">
+            <div class="logo"></div>
+            Mock Image
+            <small>有图有真相，快速生成你所需要的图片。</small>
+        </h1>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="span7">
+            <h3 class="footer-title">简介</h3>
+
+            <p>还在为开发过程中找固定尺寸的图片而发愁或者默默地准备自己切一张?<br/>
+                该使用MockImage了，支持多种图片格式，多种生成参数。<br/>
+                了解详情： <a href="#document" target="_self">使用文档</a>、<a href="#play" target="_self">玩一下</a>。
+            </p>
+
+            <p>修改自 <a href="http://www.dummyimage.com/">dummyimage.com/</a> by <a
+                    href="http://soulteary.com">soulteary</a>。</p>
+        </div>
+
+        <div class="span5">
+            <div class="footer-banner">
+                <h3 class="footer-title">程序功能</h3>
+                <ul>
+                    <li>生成指定尺寸的图片</li>
+                    <li>指定生成图片格式</li>
+                    <li>指定生成图片颜色</li>
+                    <li>指定图片文本</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="play">
+
+    <h1>图片生成模拟</h1>
+
+    <div class="row demo-row">
+        <div class="span12">
+            <img id="preview" width="100%" src="/600x400/000/fff" title="模拟生成图片"/>
+        </div>
+    </div>
+
+    <h3 class="demo-panel-title">参数</h3>
+
+    <div class="row demo-row">
+        <div class="span12">
+            <a id="demo-link" href="/600x400/000/fff" target="_blank" class="btn btn-large btn-block">http://mockimage.pantimos.io/600x400/000/fff</a>
+        </div>
+
+    </div>
+    <div class="row demo-row">
+        <div class="span3">图片尺寸</div>
+        <div class="span3">图片颜色</div>
+        <div class="span3">文本颜色</div>
+        <div class="span3">图片格式</div>
+    </div>
+
+    <div class="row demo-row demo-inputs">
+        <div class="span3">
+            <div class="control-group">
+                <input class="span3" type="text" id="size" value="600x400" required/>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="control-group">
+                <input class="span3" type="text" id="background" value="000" required/>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="control-group">
+                <input class="span3" type="text" id="color" value="fff" required/>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="control-group">
+                <select class="span3" id="format">
+                    <option value="" selected></option>
+                    <option value=".png">png</option>
+                    <option value=".gif">gif</option>
+                    <option value=".jpg">jpg</option>
+                </select>
+            </div>
+        </div>
+        <div class="span6">
+            <div class="control-group">
+                <input type="text" id="text" class="span6" size="30" value="" placeholder="替换默认显示的文本内容"/>
+            </div>
+        </div>
+        <div class="offset3 span3">
+            <div class="control-group">
+                <a href="#palette" class="btn btn-info btn-large btn-block" target="_self">更多配色</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="document">
+        <div class="span12">
+            <div class="demo-text-box prl">
+                <h3 class="demo-panel-title">使用文档</h3>
+
+                <h4>尺寸</h4>
+
+                <p>宽度 x 高度</p>
+                <ul>
+                    <li>高度是可选属性，如果没有设置宽度，那么将生成一个正方形。例如： <a href="/300" class="example correct">http://dummyimage.pantimos.io/300</a>
+                    </li>
+                    <li>尺寸参数<strong>必须</strong>作为URI中的第一个参数。</li>
+                    <li>你可以只指定其中一个参数，另外一个使用比例来代替，程序将会自动计算该比例的具体数值。例如： <a href="/640x4:3" class="example correct">http://dummyimage.pantimos.io/640x4:3</a>
+                        或者 <a href="/16:9x1080" class="example correct">http://dummyimage.pantimos.io/16:9x1080</a></li>
+                </ul>
+
+                <h4>颜色</h4>
+
+                <p>背景色 / 文本颜色</p>
+                <ul>
+                    <li>颜色数值推荐使用HEX格式，例如：fff，ffffff。</li>
+                    <li>颜色必须跟在尺寸之后，例如： <a href="/250/ffffff/000000" target="_blank" class="example correct">http://dummyimage.pantimos.io/250/ffffff/000000</a></li>
+                    <li>背景色是第一个参数，文本颜色是第二个参数。</li>
+                    <li>背景色和文本颜色皆为可选参数，默认背景色为#ccc，文本颜色为000。</li>
+                    <li>下面是一些颜色的缩写例子：
+                        <ul>
+                            <li>3位颜色数值将会扩展到6位： <span class="example">09f</span> => <span class="example">0099ff</span></li>
+                            <li>2位颜色数值将会扩展到6位： <span class="example">ef</span> => <span class="example">efefef</span></li>
+                            <li>1位颜色数值将会扩展到6位： <span class="example">c</span> => <span class="example">cccccc</span></li>
+                        </ul>
+                    </li>
+                </ul>
+                <h4>图片格式</h4>
+                <p>.gif, .jpg, .png</p>
+                <ul>
+                    <li>添加不同的文件格式名称，将会输出不同格式的图片。</li>
+                    <li>默认图片格式为gif。</li>
+                    <li>jpg和jpeg输出内容相同。</li>
+                    <li>格式名称必须在地址的最后面，<ul>
+                        <li><a href="300/09f/fff.png" target="_blank" class="example correct">http://dummyimage.pantimos.io/300/09f/fff.png</a>
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+                <h4>文本内容</h4>
+                <p>?text=Hello+World</p>
+                <ul>
+                    <li>自定义文本内容，必须在请求URI的末端。</li>
+                    <li>默认内容为图片尺寸，Width x Height。</li>
+                    <li>支持中英文。</li>
+                    <li>空格 => +
+                        <ul>
+                            <li><a href="200x300?text=HELLO+world+rocks!" target="_blank" class="example correct">http://dummyimage.pantimos.io/200x300?text=HELLO+world+rocks!</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="span12">
+            <h5 id="screen">标准屏幕尺寸</h5>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>尺寸</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="cga">cga</a></td>
+                    <td>320x200</td>
+                </tr>
+                <tr>
+                    <td><a href="qvga">qvga</a></td>
+                    <td>320x240</td>
+                </tr>
+                <tr>
+                    <td><a href="vga">vga</a></td>
+                    <td>640x480</td>
+                </tr>
+                <tr>
+                    <td><a href="wvga">wvga</a></td>
+                    <td>800x480</td>
+                </tr>
+                <tr>
+                    <td><a href="svga">svga</a></td>
+                    <td>800x480</td>
+                </tr>
+                <tr>
+                    <td><a href="wsvga">wsvga</a></td>
+                    <td>1024x600</td>
+                </tr>
+                <tr>
+                    <td><a href="xga">xga</a></td>
+                    <td>1024x768</td>
+                </tr>
+                <tr>
+                    <td><a href="wxga">wxga</a></td>
+                    <td>1280x800</td>
+                </tr>
+                <tr>
+                    <td><a href="wsxga">wsxga</a></td>
+                    <td>1440x900</td>
+                </tr>
+                <tr>
+                    <td><a href="wuxga">wuxga</a></td>
+                    <td>1920x1200</td>
+                </tr>
+                <tr>
+                    <td><a href="wqxga">wqxga</a></td>
+                    <td>2560x1600</td>
+                </tr>
+                </tbody>
+            </table>
+            <h5 id="video">标准视频尺寸</h5>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>名称</th>
+                    <th>尺寸</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><a href="ntsc">ntsc</a></td>
+                    <td>720x480</td>
+                </tr>
+                <tr>
+                    <td><a href="pal">pal</a></td>
+                    <td>768x576</td>
+                </tr>
+                <tr>
+                    <td><a href="hd720">hd720</a></td>
+                    <td>1280x720</td>
+                </tr>
+                <tr>
+                    <td><a href="hd1080">hd1080</a></td>
+                    <td>1920x1080</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row" id="palette">
+        <div class="span12">
+            <h3 class="demo-panel-title">可选配色</h3>
+
+            <div class="row mbl">
+                <div class="span2">
+                    <dl class="palette palette-firm">
+                        <dt>#1abc9c</dt>
+                        <dd>Turquoise</dd>
+                    </dl>
+                    <dl class="palette palette-firm-dark">
+                        <dt>#16a085</dt>
+                        <dd>Green sea</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-success">
+                        <dt>#2ecc71</dt>
+                        <dd>Emerland</dd>
+                    </dl>
+                    <dl class="palette palette-success-dark">
+                        <dt>#27ae60</dt>
+                        <dd>Nephritis</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-info">
+                        <dt>#3498db</dt>
+                        <dd>Peter river</dd>
+                    </dl>
+                    <dl class="palette palette-info-dark">
+                        <dt>#2980b9</dt>
+                        <dd>Belize hole</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-amethyst">
+                        <dt>#9b59b6</dt>
+                        <dd>Amethyst</dd>
+                    </dl>
+                    <dl class="palette palette-wisteria">
+                        <dt>#8e44ad</dt>
+                        <dd>Wisteria</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-night">
+                        <dt>#34495e</dt>
+                        <dd>Wet asphalt</dd>
+                    </dl>
+                    <dl class="palette palette-night-dark">
+                        <dt>#2c3e50</dt>
+                        <dd>Midnight blue</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-blue">
+                        <dt>#12489D</dt>
+                        <dd>Light Grey</dd>
+                    </dl>
+                    <dl class="palette palette-blue-dark">
+                        <dt>#0C1174</dt>
+                        <dd>Black</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <div class="row mbl">
+                <div class="span2">
+                    <dl class="palette palette-bright">
+                        <dt>#f1c40f</dt>
+                        <dd>Sun flower</dd>
+                    </dl>
+                    <dl class="palette palette-bright-dark">
+                        <dt>#f39c12</dt>
+                        <dd>Orange</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-carrot">
+                        <dt>#e67e22</dt>
+                        <dd>Carrot</dd>
+                    </dl>
+                    <dl class="palette palette-pumpkin">
+                        <dt>#d35400</dt>
+                        <dd>Pumpkin</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-alizarin">
+                        <dt>#e74c3c</dt>
+                        <dd>Alizarin</dd>
+                    </dl>
+                    <dl class="palette palette-pomegranate">
+                        <dt>#c0392b</dt>
+                        <dd>Pomegranate</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-clouds">
+                        <dt>#ecf0f1</dt>
+                        <dd>Clouds</dd>
+                    </dl>
+                    <dl class="palette palette-silver">
+                        <dt>#bdc3c7</dt>
+                        <dd>Silver</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-concrete">
+                        <dt>#95a5a6</dt>
+                        <dd>Concrete</dd>
+                    </dl>
+                    <dl class="palette palette-asbestos">
+                        <dt>#7f8c8d</dt>
+                        <dd>Asbestos</dd>
+                    </dl>
+                </div>
+
+                <div class="span2">
+                    <dl class="palette palette-white">
+                        <dt>#eee</dt>
+                        <dd>Light Grey</dd>
+                    </dl>
+                    <dl class="palette palette-white-dark">
+                        <dt>#000</dt>
+                        <dd>Black</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row page-footer">
+        <a href="http://soulteary.com">more useful things.</a>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        var controls = $('.demo-inputs input, .demo-inputs select');
+        controls.on('change', function () {
+            var url = 'http://mockimage.pantimos.io/';
+            controls.each(function (count) {
+                if ($(this).val()) {
+                    switch (count) {
+                        case 1:
+                            url += '/' + $(this).val();
+                            break;
+                        case 2:
+                            url += '/' + $(this).val();
+                            break;
+                        case 4:
+                            var text = $(this).val();
+                            text = text.replace(/#/ig, "0x23");
+                            text = text.replace(/%/ig, "0x25");
+                            text = text.replace(/&/ig, "0x26");
+                            text = text.replace(/\+/ig, "0x2B");
+                            text = text.replace(/\s/ig, '+');
+                            url += '?text=' + text;
+                            break;
+                        default:
+                            url += $(this).val();
+                    }
+                }
+            });
+            url = encodeURI(url);
+            $('#preview').attr('src', url);
+            $('#demo-link').attr('href', url).text(url);
+        });
+    });
+</script>
+</body>
+</html>
