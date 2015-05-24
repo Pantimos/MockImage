@@ -12,4 +12,4 @@
 
 ## 界面
 
-[!界面预览](./assets/img/preview.png)
+![界面预览](./assets/img/preview.png)
