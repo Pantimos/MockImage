@@ -247,7 +247,7 @@ class MockImage
             $this->text = $this->width . " x " . $this->height;
         }
 
-        $font = dirname((__FILE__)) . "/NotoSansCJKsc-Regular.otf";
+        $font = FONT_PATH;
         //I don't use this but if you wanted to angle your text you would change it here.
         $text_angle = 0;
 

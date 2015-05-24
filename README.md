@@ -8,4 +8,8 @@
 
 ## 感谢
 
-程序借鉴自：http://www.dummyimage.com/，感谢原作者的奉献。
+程序借鉴自：[dummyimage](http://www.dummyimage.com/)，感谢原作者的奉献。
+
+## 界面
+
+[!界面预览](./assets/img/preview.png)
