@@ -225,7 +225,7 @@ class MockImage
      */
     private function setFileFormat($format)
     {
-        if (in_array($format, ["gif", "png", "jpg", "jpeg"])) {
+        if (in_array($format, ["gif", "png", "jpg", "jpeg", "webp"])) {
             $this->fileFormat = $format;
         } else {
             self::fail("Not support format:" . $format);
@@ -295,6 +295,9 @@ class MockImage
                 break;
             case 'png':
                 imagepng($this->image);
+                break;
+            case 'webp':
+                imagewebp($this->image);
                 break;
             case 'jpg':
             case 'jpeg':
